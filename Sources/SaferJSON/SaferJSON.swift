@@ -16,7 +16,7 @@ public struct SaferJSON {
         case .object(let object): object.isEmpty
         }
     }
-    var count: Int {
+    public var count: Int {
         switch storage {
         case .null: -1
         case .number, .bool: -1
@@ -45,7 +45,7 @@ public struct SaferJSON {
         self.storage = object.map { .object($0.mapValues(\.storage)) } ?? .null
     }
 
-    var isNull: Bool { storage == .null }
+    public var isNull: Bool { storage == .null }
     public mutating func setNull() { storage = .null }
 
     public func get() -> Double? { storage.value as? Double }
